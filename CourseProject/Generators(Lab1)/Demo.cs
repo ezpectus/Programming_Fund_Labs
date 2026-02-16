@@ -1,4 +1,4 @@
-namespace GeneratorsLab1;
+
 
 namespace GeneratorsLab1;
 
