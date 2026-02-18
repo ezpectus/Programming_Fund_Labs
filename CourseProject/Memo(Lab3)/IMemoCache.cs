@@ -1,0 +1,2 @@
+//To implement the cache for the memo application, we can define an interface called IMemoCache.
+//This interface will provide mthods for adding, retrieving, and removing memos from the cache. Below is an example implementation of the IMemoCache interface in C#:
