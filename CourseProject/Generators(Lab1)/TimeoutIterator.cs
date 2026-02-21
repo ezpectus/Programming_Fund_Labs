@@ -12,10 +12,11 @@ namespace GeneratorsLab1
             long sum = 0;
             int count = 0;
 
-            foreach (var item in generator)
+            using var enumerator = generator.GetEnumerator();
+
+            while (DateTime.Now < endTime && enumerator.MoveNext())
             {
-                if (DateTime.Now >= endTime)
-                    break;
+                var item = enumerator.Current;
 
                 Console.WriteLine(item);
 

@@ -1,70 +1,102 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 
 //My leetcode solution for LRU Cache problem
 
+
 namespace CourseProject.MemoLab3
 {
-    public class LRUCache
-{
-
-    private readonly int capacity;
-    private readonly Dictionary<int, LinkedListNode<CacheItem>> cacheMap;
-    private readonly LinkedList<CacheItem> cacheList;
-
-    public LRUCache(int capacity)
+    public class LRUCache : IMemoCache
     {
-        this.capacity = capacity;
-        cacheMap = new Dictionary<int, LinkedListNode<CacheItem>>(capacity);
-        cacheList = new LinkedList<CacheItem>();
-    }
+        private readonly int capacity;
+        private readonly TimeSpan? ttl;
 
-    public int Get(int key)
-    {
-        if (cacheMap.TryGetValue(key, out var node))
+        private readonly Dictionary<string, LinkedListNode<CacheItem>> map;
+        private readonly LinkedList<CacheItem> list;
+
+        public LRUCache(int capacity, TimeSpan? ttl = null)
         {
-            cacheList.Remove(node);
-            cacheList.AddFirst(node);
-            return node.Value.Value;
+            this.capacity = capacity;
+            this.ttl = ttl;
+
+            map = new Dictionary<string, LinkedListNode<CacheItem>>();
+            list = new LinkedList<CacheItem>();
         }
-        return -1;
-    }
 
-    public void Put(int key, int value)
-    {
-        if (cacheMap.TryGetValue(key, out var node))
+        public bool TryGet(string key, out object value)
         {
-            node.Value.Value = value;
-            cacheList.Remove(node);
-            cacheList.AddFirst(node);
-        }
-        else
-        {
-            if (cacheMap.Count >= capacity)
+            if (!map.TryGetValue(key, out var node))
             {
-                var lastNode = cacheList.Last;
-                cacheMap.Remove(lastNode.Value.Key);
-                cacheList.RemoveLast();
+                value = null;
+                return false;
             }
 
-            var newNode = new LinkedListNode<CacheItem>(new CacheItem(key, value));
-            cacheMap.Add(key, newNode);
-            cacheList.AddFirst(newNode);
+            // TTL check
+            if (ttl.HasValue && DateTime.Now - node.Value.CreatedAt > ttl.Value)
+            {
+                Remove(key);
+                value = null;
+                return false;
+            }
+
+            list.Remove(node);
+            list.AddFirst(node);
+
+            value = node.Value.Value;
+            return true;
+        }
+
+        public void Set(string key, object value)
+        {
+            if (capacity == 0)
+                return;
+
+            if (map.TryGetValue(key, out var node))
+            {
+                node.Value.Value = value;
+                node.Value.CreatedAt = DateTime.Now;
+                list.Remove(node);
+                list.AddFirst(node);
+                return;
+            }
+
+            if (map.Count >= capacity)
+            {
+                var last = list.Last;
+                map.Remove(last.Value.Key);
+                list.RemoveLast();
+            }
+
+            var item = new CacheItem(key, value);
+            var newNode = new LinkedListNode<CacheItem>(item);
+
+            map[key] = newNode;
+            list.AddFirst(newNode);
+        }
+
+        public void Remove(string key)
+        {
+            if (!map.TryGetValue(key, out var node))
+                return;
+
+            list.Remove(node);
+            map.Remove(key);
+        }
+
+        private class CacheItem
+        {
+            public string Key { get; }
+            public object Value { get; set; }
+            public DateTime CreatedAt { get; set; }
+
+            public CacheItem(string key, object value)
+            {
+                Key = key;
+                Value = value;
+                CreatedAt = DateTime.Now;
+            }
         }
     }
-
-    private class CacheItem
-    {
-        public int Key { get; }
-        public int Value { get; set; }
-
-        public CacheItem(int key, int value)
-        {
-            Key = key;
-            Value = value;
-         }
-       }
-    }
-  }
+}

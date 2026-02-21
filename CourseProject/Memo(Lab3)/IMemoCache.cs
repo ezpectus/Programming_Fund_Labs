@@ -9,9 +9,8 @@ namespace CourseProject.MemoLab3
 {
     public interface IMemoCache
     {
-        void AddMemo(string key, object value);
-        object GetMemo(string key);
-        void RemoveMemo(string key);
-        bool ContainsMemo(string key);
+        bool TryGet(string key, out object value);
+        void Set(string key, object value);
+        void Remove(string key);
     }
 }

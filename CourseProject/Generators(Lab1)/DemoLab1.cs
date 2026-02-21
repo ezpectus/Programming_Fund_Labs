@@ -1,14 +1,13 @@
-
+using System;
 
 namespace GeneratorsLab1
 {
-    class Demo
+    class DemoLab1
     {
-        static void DemoLab1()
+        public static void Run()
         {
             var fib = FibonacciGenerator.Generate();
             TimeoutIterator.Consume(fib, 5);
-
         }
     }
 }

@@ -1,3 +1,5 @@
+using GeneratorsLab1;
+using PGR_FUND_LABS_CS.CourseProject.Memo_Lab3_;
 using System;
 
 namespace CourseProject
@@ -6,7 +8,12 @@ namespace CourseProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Generators Lab 1");
+            Console.WriteLine("Main class");
+            Console.WriteLine("Demo Lab1 Run; Generators");
+            DemoLab1.Run();
+            Console.WriteLine("Demo Lab3 Run; Memoization"); 
+            DemoLab3.Run();
+
         }
     }
 }
