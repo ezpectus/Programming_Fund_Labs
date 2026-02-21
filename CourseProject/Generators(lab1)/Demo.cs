@@ -2,9 +2,9 @@
 
 namespace GeneratorsLab1
 {
-    class Program
+    class Demo
     {
-        static void Main()
+        static void DemoLab1()
         {
             var fib = FibonacciGenerator.Generate();
             TimeoutIterator.Consume(fib, 5);
