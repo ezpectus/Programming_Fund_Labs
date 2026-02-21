@@ -1,11 +1,12 @@
+using System;
 
-
-namespace CourseProject;
-
-class Program
+namespace CourseProject
 {
-    static void Main(string[] args)
+    class MainClass
     {
-        Console.WriteLine("Generators Lab 1");
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Generators Lab 1");
+        }
     }
 }

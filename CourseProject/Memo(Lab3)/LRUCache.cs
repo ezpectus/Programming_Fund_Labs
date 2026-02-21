@@ -1,7 +1,13 @@
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 //My leetcode solution for LRU Cache problem
-public class LRUCache
+
+namespace CourseProject.MemoLab3
+{
+    public class LRUCache
 {
 
     private readonly int capacity;
@@ -58,6 +64,7 @@ public class LRUCache
         {
             Key = key;
             Value = value;
-        }
+         }
+       }
     }
-}
+  }

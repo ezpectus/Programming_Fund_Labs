@@ -1,7 +1,12 @@
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 //My leetcode solution for LFU Cache problem
-public class LFUCache
+
+namespace CourseProject.MemoLab3
+{
+    public class LFUCache
 {
     private readonly int capacity;
     private readonly Dictionary<int, LinkedListNode<CacheEntry>> nodes;
@@ -11,7 +16,7 @@ public class LFUCache
     {
         this.capacity = capacity;
         nodes = new Dictionary<int, LinkedListNode<CacheEntry>>(capacity);
-        freqList = new SortedDictionary<int, LinkedList<CacheEntry>>();
+            freqList = new SortedDictionary<int, LinkedList<CacheEntry>>();
     }
 
     public int Get(int key)
@@ -83,11 +88,12 @@ public class LFUCache
         public int Value { get; set; }
         public int Frequency { get; set; }
 
-        public CacheEntry(int key, int value)
+            public CacheEntry(int key, int value)
         {
             Key = key;
             Value = value;
             Frequency = 1;
-        }
+          }
+       }
     }
-}
+  }
