@@ -5,7 +5,7 @@ using System.Linq;
 //My leetcode solution for LFU Cache problem
 
 
-namespace CourseProject.MemoLab3
+namespace PGR_FUND_LABS_CS.CourseProject.MemoLab3
 {
     public class LFUCache : IMemoCache
     {

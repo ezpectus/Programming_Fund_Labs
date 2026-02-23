@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PGR_FUND_LABS_CS.CourseProject.Memo_Lab3_
 {
-    class DemoLab3
+    class CacheLab3
     {
         public static void Run()
         {

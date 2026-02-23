@@ -6,7 +6,7 @@ using System.Collections.Generic;
 //My leetcode solution for LRU Cache problem
 
 
-namespace CourseProject.MemoLab3
+namespace PGR_FUND_LABS_CS.CourseProject.MemoLab3
 {
     public class LRUCache : IMemoCache
     {

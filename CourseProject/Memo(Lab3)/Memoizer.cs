@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CourseProject.MemoLab3;
+using PGR_FUND_LABS_CS.CourseProject.MemoLab3;
 
-namespace CourseProject.MemoLab3
+namespace PGR_FUND_LABS_CS.CourseProject.MemoLab3
 {
     public class Memoizer
     {

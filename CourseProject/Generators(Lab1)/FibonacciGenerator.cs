@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace GeneratorsLab1
+namespace PGR_FUND_LABS_CS.CourseProject.GeneratorsLab1
 {
     public static class FibonacciGenerator
     {

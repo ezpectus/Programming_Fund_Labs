@@ -1,6 +1,6 @@
 using System;
 
-namespace GeneratorsLab1
+namespace PGR_FUND_LABS_CS.CourseProject.GeneratorsLab1
 {
     class DemoLab1
     {
