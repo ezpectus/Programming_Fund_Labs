@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 
 
+
 namespace PGR_FUND_LABS_CS.CourseProject.AsyncArray_Lab5_
 {
     public static class AsyncMapCallback
@@ -23,11 +24,22 @@ namespace PGR_FUND_LABS_CS.CourseProject.AsyncArray_Lab5_
             {
                 int index = i;
 
-                selector(source[i], result =>
+                Task.Run(async () =>
                 {
-                    results[index] = result;
-                    if (Interlocked.Increment(ref completed) == source.Count)
-                        onCompleted(new List<TResult>(results));
+                    if (token.IsCancellationRequested)
+                        return;
+
+                    await selector(source[index], result =>
+                    {
+                        results[index] = result;
+
+                        if (Interlocked.Increment(ref completed) == source.Count)
+                        {
+                            onCompleted(new List<TResult>(results));
+                        }
+
+                    }, token);
+
                 }, token);
             }
         }
