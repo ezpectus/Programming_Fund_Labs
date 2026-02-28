@@ -5,21 +5,27 @@ using System.Threading.Tasks;
 
 namespace LargeDataProcessing
 {
-   class Program
-    {
-        static async Task Main(string[] args)
+    
+        internal class Program
         {
-            string filePath = "large_data.txt";
+            static async Task Main(string[] args)
+            {
+                string filePath = "large_data.txt";
+                int recordCount = 50000;
 
-            var reader = new DataStreamReader();
-            var processor = new DataProcessor();
+                Console.WriteLine("Generating large test file...");
+                await DataGenerator.GenerateAsync(filePath, recordCount);
 
-            // TODO:
-            // 1. Generate large file
-            // 2. Read file using async stream
-            // 3. Process records incrementally
+                var reader = new DataStreamReader();
+                var processor = new DataProcessor();
 
-            Console.WriteLine("Lab 6 base structure ready.");
-        }
-    }
+                Console.WriteLine("\nStarting incremental processing...");
+
+                var stream = reader.ReadAsync(filePath);
+
+                await processor.ProcessAsync(stream);
+
+                Console.WriteLine("Done.");
+            }
+      }
 }

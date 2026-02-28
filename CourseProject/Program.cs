@@ -1,5 +1,6 @@
 
 
+using PGR_FUND_LABS_CS.CourseProject.AsyncArray_Lab5_;
 using PGR_FUND_LABS_CS.CourseProject.BiDirQueueLab4;
 using PGR_FUND_LABS_CS.CourseProject.GeneratorsLab1;
 using PGR_FUND_LABS_CS.CourseProject.Memo_Lab3_;
@@ -31,6 +32,9 @@ namespace PGR_FUND_LABS_CS.CourseProject
                         break;
                     case "4":
                         Lab4Demo.Run();
+                        break;
+                    case "5":
+                        _ = AsyncArrayDemo.Run();
                         break;
                     case "0":
                         return;

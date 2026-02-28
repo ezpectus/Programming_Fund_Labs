@@ -1,17 +1,30 @@
-﻿using System.Threading.Tasks;
+﻿
+using System.Threading.Tasks;
+using System;
+using System.IO;
+using System.Text;
 
+
+// Responsible for generating large test files
 namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
 {
-    // Responsible for generating large test files
-    public static class DataGenerator
-    {
-        // TODO:
-        // Generate a large file with many lines
-        // Used to simulate large dataset
-
-        public static async Task GenerateAsync(string filePath, int numberOfLines)
+   
+        // Generates large test data file for stream processing demo
+        public static class DataGenerator
         {
-            await Task.CompletedTask;
+            public static async Task GenerateAsync(string filePath, int recordCount)
+            {
+                using var writer = new StreamWriter(filePath, false, Encoding.UTF8);
+
+                for (int i = 1; i <= recordCount; i++)
+                {
+                    await writer.WriteLineAsync($"Record_{i}");
+                    if (i % 10000 == 0)  Console.WriteLine($"Generated {i} records...");
+                    
+                }
+
+                Console.WriteLine("File generation completed.");
+            }
         }
-    }
+    
 }

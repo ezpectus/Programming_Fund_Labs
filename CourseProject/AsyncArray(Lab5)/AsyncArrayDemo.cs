@@ -54,8 +54,7 @@ namespace PGR_FUND_LABS_CS.CourseProject.AsyncArray_Lab5_
             Console.WriteLine("\n=== Callback-based Map ===");
 
             var completionSource = new TaskCompletionSource<bool>();
-
-            AsyncMapCallback.MapAsync(
+            AsyncMapCallback.MapAsync<int, int>(
                 numbers,
                 async (n, callback, token) =>
                 {
