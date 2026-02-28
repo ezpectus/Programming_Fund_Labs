@@ -3,29 +3,30 @@ using PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing;
 using System;
 using System.Threading.Tasks;
 
-namespace LargeDataProcessing
+
+namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
 {
-    
-        internal class Program
+    public static class DemoLab6
+    {
+        public static async Task Run()
         {
-            static async Task Main(string[] args)
-            {
-                string filePath = "large_data.txt";
-                int recordCount = 50000;
+            string filePath = "large_data.txt";
+            int recordCount = 50000;
 
-                Console.WriteLine("Generating large test file...");
-                await DataGenerator.GenerateAsync(filePath, recordCount);
+            Console.WriteLine("=== Lab 6: Large Data Processing ===");
 
-                var reader = new DataStreamReader();
-                var processor = new DataProcessor();
+            Console.WriteLine("Generating large test file...");
+            await DataGenerator.GenerateAsync(filePath, recordCount);
 
-                Console.WriteLine("\nStarting incremental processing...");
+            var reader = new DataStreamReader();
+            var processor = new DataProcessor();
 
-                var stream = reader.ReadAsync(filePath);
+            Console.WriteLine("\nStarting incremental processing...");
 
-                await processor.ProcessAsync(stream);
+            var stream = reader.ReadAsync(filePath);
+            await processor.ProcessAsync(stream);
 
-                Console.WriteLine("Done.");
-            }
-      }
+            Console.WriteLine("Lab 6 completed.");
+        }
+    }
 }

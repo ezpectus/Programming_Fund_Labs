@@ -1,5 +1,5 @@
 
-
+using PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing;
 using PGR_FUND_LABS_CS.CourseProject.AsyncArray_Lab5_;
 using PGR_FUND_LABS_CS.CourseProject.BiDirQueueLab4;
 using PGR_FUND_LABS_CS.CourseProject.GeneratorsLab1;
@@ -18,6 +18,8 @@ namespace PGR_FUND_LABS_CS.CourseProject
                 Console.WriteLine("1 - Lab1");
                 Console.WriteLine("3 - Lab3");
                 Console.WriteLine("4 - Lab4");
+                Console.WriteLine("5 - Lab5");
+                Console.WriteLine("6 - Lab6");
                 Console.WriteLine("0 - Exit");
 
                 var input = Console.ReadLine();
@@ -34,7 +36,10 @@ namespace PGR_FUND_LABS_CS.CourseProject
                         Lab4Demo.Run();
                         break;
                     case "5":
-                        _ = AsyncArrayDemo.Run();
+                        AsyncArrayDemo.Run().GetAwaiter().GetResult();
+                        break;
+                    case "6":
+                        DemoLab6.Run().GetAwaiter().GetResult();
                         break;
                     case "0":
                         return;
