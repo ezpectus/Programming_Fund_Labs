@@ -7,40 +7,37 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
 {
-    // Reads large files incrementally using async streams
     public class DataStreamReader
     {
-        public async IAsyncEnumerable<DataRecord> ReadAsync(
-            string filePath,
-            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+        // Reads data from a file and yields DataRecord instances incrementally
+        public async IAsyncEnumerable<DataRecord> ReadAsync(string filePath)
         {
-            using var stream = new FileStream(
-                filePath,
-                FileMode.Open,
-                FileAccess.Read,
-                FileShare.Read,
-                bufferSize: 4096,
-                useAsync: true);
+            using var reader = new StreamReader(filePath);
 
-            using var reader = new StreamReader(stream);
+            string? line;
             int id = 0;
 
-            while (!reader.EndOfStream)
+            while ((line = await reader.ReadLineAsync()) != null)
             {
-                cancellationToken.ThrowIfCancellationRequested();
-                var line = await reader.ReadLineAsync();
+                id++;
 
-                if (line is null)
-                    continue;
+                var record = ParseLine(line, id);
 
-                yield return new DataRecord
-                {
-                    Id = id++,
-                    RawContent = line
-                };
+                yield return record;
             }
+        }
+
+        private DataRecord ParseLine(string line, int id)
+        {
+            return new DataRecord
+            {
+                Id = id,
+                RawContent = line,
+                Value = line.Length // простая логика пока
+            };
         }
     }
 }
