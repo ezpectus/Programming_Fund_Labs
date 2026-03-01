@@ -12,28 +12,27 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
 
         public class DataProcessor
         {
-            public async Task ProcessAsync(IAsyncEnumerable<string> stream)
-            {
-                int totalLines = 0;
-                long totalCharacters = 0;
+          public async Task ProcessAsync(IAsyncEnumerable<DataRecord> stream)
+           {
+                int totalRecords = 0;
+                long totalValSum = 0;
 
-                await foreach (var line in stream)
+                await foreach (var record in stream)
                 {
-                    totalLines++;
-                    totalCharacters += line.Length;
+                    totalRecords++;
+                    totalValSum += record.Value;
 
                     // Simple processing example:
                     // Here we just simulate lightweight work
-                    var processed = line.ToUpper();
-
-                    if (totalLines % 10000 == 0) Console.WriteLine($"Processed {totalLines} lines...");
+             
+                    if (totalRecords % 10000 == 0) Console.WriteLine($"Processed {totalRecords} records...");
                     
                 }
 
                 Console.WriteLine();
                 Console.WriteLine("Processing statistics:");
-                Console.WriteLine($"Total lines: {totalLines}");
-                Console.WriteLine($"Total characters: {totalCharacters}");
+                Console.WriteLine($"Total records: {totalRecords}");
+                Console.WriteLine($"Total value sum:  {totalValSum}");
             }
        }
   }
