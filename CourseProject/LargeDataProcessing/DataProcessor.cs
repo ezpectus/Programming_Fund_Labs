@@ -6,33 +6,44 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
+
 namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
 {
-    // Provides incremental processing of streamed data
-
-        public class DataProcessor
+    public class DataProcessor
+    {
+        public static async Task ProcessAsync(IAsyncEnumerable<DataRecord> stream)
         {
-          public async Task ProcessAsync(IAsyncEnumerable<DataRecord> stream)
-           {
-                int totalRecords = 0;
-                long totalValSum = 0;
+            int totalRecords = 0;
+            int processedRecords = 0;
+            long totalValueSum = 0;
 
-                await foreach (var record in stream)
+            await foreach (var record in stream)
+            {
+                totalRecords++;
+
+                if (!ShouldProcess(record))
+                    continue;
+
+                processedRecords++;
+                totalValueSum += record.Value;
+
+                if (processedRecords % 10000 == 0)
                 {
-                    totalRecords++;
-                    totalValSum += record.Value;
-
-                    // Simple processing example:
-                    // Here we just simulate lightweight work
-             
-                    if (totalRecords % 10000 == 0) Console.WriteLine($"Processed {totalRecords} records...");
-                    
+                    Console.WriteLine($"Processed {processedRecords} filtered records...");
                 }
-
-                Console.WriteLine();
-                Console.WriteLine("Processing statistics:");
-                Console.WriteLine($"Total records: {totalRecords}");
-                Console.WriteLine($"Total value sum:  {totalValSum}");
             }
-       }
-  }
+
+            Console.WriteLine();
+            Console.WriteLine("Processing statistics:");
+            Console.WriteLine($"Total read records: {totalRecords}");
+            Console.WriteLine($"Filtered records: {processedRecords}");
+            Console.WriteLine($"Sum of filtered values: {totalValueSum}");
+        }
+
+        private static bool ShouldProcess(DataRecord record)
+        {
+            // Simple filtering rule 
+            return record.Value > 10;
+        }
+    }
+}

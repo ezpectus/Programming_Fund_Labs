@@ -23,8 +23,8 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
 
             Console.WriteLine("\nStarting incremental processing...");
 
-            var stream = reader.ReadAsync(filePath);
-            await processor.ProcessAsync(stream);
+            var stream = DataStreamReader.ReadAsync(filePath);
+            await DataProcessor.ProcessAsync(stream);
 
             Console.WriteLine("Lab 6 completed.");
         }

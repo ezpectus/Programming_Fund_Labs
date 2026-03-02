@@ -13,11 +13,11 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
     public class DataStreamReader
     {
         // Reads data from a file and yields DataRecord instances incrementally
-        public async IAsyncEnumerable<DataRecord> ReadAsync(string filePath)
+        public static async IAsyncEnumerable<DataRecord> ReadAsync(string filePath)
         {
             using var reader = new StreamReader(filePath);
 
-            string? line;
+            string line;
             int id = 0;
 
             while ((line = await reader.ReadLineAsync()) != null)
@@ -30,13 +30,13 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
             }
         }
 
-        private DataRecord ParseLine(string line, int id)
+        private static DataRecord ParseLine(string line, int id)
         {
             return new DataRecord
             {
                 Id = id,
                 RawContent = line,
-                Value = line.Length // простая логика пока
+                Value = line.Length // simple example: using line length as a value for processing
             };
         }
     }
