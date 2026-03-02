@@ -77,9 +77,10 @@ namespace PGR_FUND_LABS_CS.CourseProject.BiDirQueueLab4
 
             public T PeekHighest() // Get the item with the highest priority without removing it
             {
-                if (priorities.Count == 0)
-                    throw new InvalidOperationException("Queue is empty.");
-                var highestPriority = priorities.Keys.Last();
+            if (IsEmpty)
+                throw new InvalidOperationException("Queue is empty.");
+
+            var highestPriority = priorities.Keys.Last();
                 var node = priorities[highestPriority].First;
                 if (node is null) throw new InvalidOperationException("No items in this priority list");
 
@@ -87,9 +88,10 @@ namespace PGR_FUND_LABS_CS.CourseProject.BiDirQueueLab4
             }
             public T PeekLowest() // Get the item with the lowest priority without removing it
             {
-                if (priorities.Count == 0)
-                    throw new InvalidOperationException("Queue is empty.");
-                var lowestPriority = priorities.Keys.First();
+            if (IsEmpty)
+                throw new InvalidOperationException("Queue is empty.");
+
+            var lowestPriority = priorities.Keys.First();
                 var node = priorities[lowestPriority].First;
                 if (node is null) throw new InvalidOperationException("No items in this priority list");
                 return node.Value.Item;
@@ -99,10 +101,10 @@ namespace PGR_FUND_LABS_CS.CourseProject.BiDirQueueLab4
 
             public T DequeueOldest() // Remove and return the item that was added first
             {
-                if (insertionOrder.Count == 0)
-                    throw new InvalidOperationException("Queue is empty.");
+              if (IsEmpty)
+                throw new InvalidOperationException("Queue is empty.");
 
-                var node = insertionOrder.First;
+            var node = insertionOrder.First;
                 if (node is null) throw new InvalidOperationException("Queue is empty.");
                 var entry = node.Value;
 
@@ -117,10 +119,10 @@ namespace PGR_FUND_LABS_CS.CourseProject.BiDirQueueLab4
 
             public T DequeueNewest() // Remove and return the item that was most recently added
             {
-                if (insertionOrder.Count == 0)
-                    throw new InvalidOperationException("Queue is empty.");
+             if (IsEmpty)
+                 throw new InvalidOperationException("Queue is empty.");
 
-                var node = insertionOrder.Last;
+            var node = insertionOrder.Last;
                 if (node is null) throw new InvalidOperationException("Queue is empty.");
                 var entry = node.Value;
 
@@ -135,10 +137,11 @@ namespace PGR_FUND_LABS_CS.CourseProject.BiDirQueueLab4
 
             public T DequeueHighest() // Remove and return the item with the highest priority
             {
-                if (priorities.Count == 0)
-                    throw new InvalidOperationException("Queue is empty.");
 
-                var highestPriority = priorities.Keys.Last();
+            if (IsEmpty)
+                throw new InvalidOperationException("Queue is empty.");
+
+            var highestPriority = priorities.Keys.Last();
                 var node = priorities[highestPriority].First;
                 if (node is null) throw new InvalidOperationException("No items in this priority list");
                 var entry = node.Value;
@@ -154,10 +157,10 @@ namespace PGR_FUND_LABS_CS.CourseProject.BiDirQueueLab4
 
             public T DequeueLowest() // Remove and return the item with the lowest priority
             {
-                if (priorities.Count == 0)
-                    throw new InvalidOperationException("Queue is empty.");
+            if (IsEmpty)
+                throw new InvalidOperationException("Queue is empty.");
 
-                var lowestPriority = priorities.Keys.First();
+            var lowestPriority = priorities.Keys.First();
                 var node = priorities[lowestPriority].First;
                 if (node is null) throw new InvalidOperationException("No items in this priority list");
                 var entry = node.Value;
