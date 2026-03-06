@@ -16,6 +16,7 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
             int totalRecords = 0;
             int processedRecords = 0;
             long totalValueSum = 0;
+            long maxValue = 0;
 
             await foreach (var record in stream)
             {
@@ -25,7 +26,11 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
                     continue;
 
                 processedRecords++;
+
                 totalValueSum += record.Value;
+
+                if (record.Value > maxValue)
+                    maxValue = record.Value;
 
                 if (processedRecords % 10000 == 0)
                 {
@@ -38,11 +43,11 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
             Console.WriteLine($"Total read records: {totalRecords}");
             Console.WriteLine($"Filtered records: {processedRecords}");
             Console.WriteLine($"Sum of filtered values: {totalValueSum}");
+            Console.WriteLine($"Max value: {maxValue}");
         }
 
         private static bool ShouldProcess(DataRecord record)
         {
-            // Simple filtering rule 
             return record.Value > 10;
         }
     }
