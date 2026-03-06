@@ -21,6 +21,7 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
             await foreach (var record in stream)
             {
                 totalRecords++;
+                await Task.Delay(1);
 
                 if (!ShouldProcess(record))
                     continue;
