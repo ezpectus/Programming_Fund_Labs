@@ -24,20 +24,8 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
             {
                 id++;
 
-                var record = ParseLine(line, id);
-
-                yield return record;
+                yield return DataRecord.FromLine(line, id);
             }
-        }
-
-        private static DataRecord ParseLine(string line, int id)
-        {
-            return new DataRecord
-            {
-                Id = id,
-                RawContent = line,
-                Value = line.Length // simple example: using line length as a value for processing
-            };
         }
     }
 }
