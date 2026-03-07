@@ -12,8 +12,5 @@ namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Core
         void OnNext(T value);
         void OnError(Exception ex);
         void OnCompleted();
-     
-           
-
     }
 }

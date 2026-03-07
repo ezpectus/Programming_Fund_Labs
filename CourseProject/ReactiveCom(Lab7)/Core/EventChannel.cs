@@ -9,7 +9,7 @@ namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Core
    public class EventChannel<T> : IEventObservable<T>
     {
 
-    private readonly List<IEventObserver<T>> observers = new();
+        private readonly List<IEventObserver<T>> observers = new();
         public void Subscribe(IEventObserver<T> observer)
         {
             if (!observers.Contains(observer)) observers.Add(observer); 
@@ -42,7 +42,5 @@ namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Core
                     observer.OnCompleted();
                 }
         }
-
-
     }
  }
