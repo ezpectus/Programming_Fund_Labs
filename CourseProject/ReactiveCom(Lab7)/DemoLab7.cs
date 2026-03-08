@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_
 {
-    internal class DemoLab7
+ public class DemoLab7
     {
+
+
+
+
+
+
     }
 }

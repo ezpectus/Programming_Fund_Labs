@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Entities
 {
-    internal class Logger
+  public class Logger
     {
+
+
+
+
+
     }
 }
