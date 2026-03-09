@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Net.Http;
 
 namespace PGR_FUND_LABS_CS.CourseProject.ProxyLab8.Core
 {
-    internal interface IAuthStrategy
+ public interface IAuthStrategy
     {
+
+
+        void Apply(HttpRequestMessage request);
     }
 }

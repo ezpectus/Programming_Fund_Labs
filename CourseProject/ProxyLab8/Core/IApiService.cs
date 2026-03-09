@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using PGR_FUND_LABS_CS.CourseProject.ProxyLab8.Core;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace PGR_FUND_LABS_CS.CourseProject.ProxyLab8.Core
 {
-    internal interface IApiService
+public interface IApiService
     {
+        Task<string> SendAsync(HttpRequestMessage request);
+
+
+
+
     }
 }
