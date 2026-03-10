@@ -7,9 +7,5 @@ namespace PGR_FUND_LABS_CS.CourseProject.ProxyLab8.Core
 public interface IApiService
     {
         Task<string> SendAsync(HttpRequestMessage request);
-
-
-
-
     }
 }
