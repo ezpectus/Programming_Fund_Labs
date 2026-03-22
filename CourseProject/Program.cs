@@ -1,11 +1,12 @@
 
-using PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing;
-using PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_;
 using PGR_FUND_LABS_CS.CourseProject.AsyncArray_Lab5_;
 using PGR_FUND_LABS_CS.CourseProject.BiDirQueueLab4;
 using PGR_FUND_LABS_CS.CourseProject.GeneratorsLab1;
+using PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing;
+using PGR_FUND_LABS_CS.CourseProject.LoggerLab9;
 using PGR_FUND_LABS_CS.CourseProject.Memo_Lab3_;
 using PGR_FUND_LABS_CS.CourseProject.ProxyLab8;
+using PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_;
 using System;
 
 namespace PGR_FUND_LABS_CS.CourseProject
@@ -24,6 +25,7 @@ namespace PGR_FUND_LABS_CS.CourseProject
                 Console.WriteLine("6 - Lab6");
                 Console.WriteLine("7 - Lab7");
                 Console.WriteLine("8 - Lab8");
+                Console.WriteLine("9 - Lab9");
                 Console.WriteLine("0 - Exit");
 
                 var input = Console.ReadLine();
@@ -51,6 +53,10 @@ namespace PGR_FUND_LABS_CS.CourseProject
                         break;
                     case "8":
                         DemoLab8.Run().GetAwaiter().GetResult();
+                        break;
+
+                   case "9":
+                       DemoLab9.Run().GetAwaiter().GetResult();
                         break;
                     case "0":
                         return;
