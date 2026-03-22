@@ -1,12 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PGR_FUND_LABS_CS.CourseProject.LoggerLab9.CoreLab9;
 
 namespace PGR_FUND_LABS_CS.CourseProject.LoggerLab9.Formatters
 {
-    internal class JsonFormatter
+    public class JsonFormatter : ILogFormatter
     {
+        public string Format(LogLevel level, string message, DateTime timestamp)
+        {
+            var logEntry = new
+            {
+                Timestamp = timestamp.ToString("o"), // ISO 8601 format
+                Level = level.ToString(),
+                Message = message
+            };
+            return System.Text.Json.JsonSerializer.Serialize(logEntry);
+        }
     }
 }
