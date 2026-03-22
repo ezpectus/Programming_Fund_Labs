@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PGR_FUND_LABS_CS.CourseProject.LoggerLab9.CoreLab9;
 
 namespace PGR_FUND_LABS_CS.CourseProject.LoggerLab9.Formatters
 {
-    internal class PlainFormatter
+    public  class PlainFormatter : ILogFormatter
     {
+
+        public string Format(LogLevel level, string message, DateTime timestamp)
+        {
+            return $"[{timestamp:yyyy-MM-dd HH:mm:ss}] {level}: {message}";
+        }
     }
 }
