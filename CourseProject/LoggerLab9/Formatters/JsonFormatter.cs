@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json;
 using PGR_FUND_LABS_CS.CourseProject.LoggerLab9.CoreLab9;
 
 namespace PGR_FUND_LABS_CS.CourseProject.LoggerLab9.Formatters
@@ -9,11 +10,11 @@ namespace PGR_FUND_LABS_CS.CourseProject.LoggerLab9.Formatters
         {
             var logEntry = new
             {
-                Timestamp = timestamp.ToString("o"), // ISO 8601 format
+                Timestamp = timestamp.ToString("o"), // ISO 8601
                 Level = level.ToString(),
                 Message = message
             };
-            return System.Text.Json.JsonSerializer.Serialize(logEntry);
+            return JsonSerializer.Serialize(logEntry);
         }
     }
 }

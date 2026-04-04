@@ -33,4 +33,3 @@ namespace PGR_FUND_LABS_CS.CourseProject.LoggerLab9.Loggers
     }
 }
 
-

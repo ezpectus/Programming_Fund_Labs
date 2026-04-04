@@ -27,7 +27,6 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
                     continue;
 
                 processedRecords++;
-
                 totalValueSum += record.Value;
 
                 if (record.Value > maxValue)

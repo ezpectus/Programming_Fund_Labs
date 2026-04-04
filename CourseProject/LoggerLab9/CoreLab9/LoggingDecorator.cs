@@ -1,13 +1,12 @@
-﻿
-
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace PGR_FUND_LABS_CS.CourseProject.LoggerLab9.CoreLab9
 {
-   public class LoggingDecorator
+    public class LoggingDecorator
     {
         private readonly ILogger _logger;
+
         public LoggingDecorator(ILogger logger)
         {
             _logger = logger;
@@ -22,7 +21,7 @@ namespace PGR_FUND_LABS_CS.CourseProject.LoggerLab9.CoreLab9
             _logger.Log(level, $"Result: {result}, Time: {duration.TotalMilliseconds}ms");
             return result;
         }
-       
+
         public async Task<T> ExecuteAsync<T>(Func<Task<T>> action, LogLevel level, string methodName)
         {
             _logger.Log(level, $"Executing: {methodName}");
@@ -32,6 +31,5 @@ namespace PGR_FUND_LABS_CS.CourseProject.LoggerLab9.CoreLab9
             _logger.Log(level, $"Result: {result}, Time: {duration.TotalMilliseconds}ms");
             return result;
         }
-
     }
 }

@@ -8,6 +8,7 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
 {
     public static class DemoLab6
     {
+    
         public static async Task Run()
         {
             string filePath = "large_data.txt";

@@ -14,14 +14,12 @@ namespace PGR_FUND_LABS_CS.CourseProject.ProxyLab8.Service
             _baseUrl = baseUrl;
         }
 
+        // Simulate sending the request to the real API and getting a response
         public async Task<string> SendAsync(HttpRequestMessage request)
         {
-            // Simulate sending the request to the real API and getting a response
             Console.WriteLine($"Sending request to {_baseUrl}{request.RequestUri}");
             await Task.Delay(500); // Simulate network delay
             return $"Response from {_baseUrl}{request.RequestUri}";
-
-
         }
     }
 }
