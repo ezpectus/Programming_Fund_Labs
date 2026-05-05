@@ -25,7 +25,5 @@ namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Entities
         {
            Console.WriteLine("Display: stream completed");
         }
-
-
-        }
+    }
 }

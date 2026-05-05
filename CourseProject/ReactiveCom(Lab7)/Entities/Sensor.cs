@@ -1,5 +1,4 @@
-﻿
-using PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Core;
+﻿using PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Core;
 
 namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Entities
 {
@@ -13,13 +12,10 @@ namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Entities
             this._eventChannel = eventChannel;
         }
 
-
         public void Send(double value)
         {
 
             _eventChannel.Publish(value);
         }
-
-
     }
 }

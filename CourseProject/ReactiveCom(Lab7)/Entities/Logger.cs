@@ -1,7 +1,6 @@
 ﻿using PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Core;
 using System;
 
-
 namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Entities
 {
     public class Logger : IEventObserver<double>
@@ -19,6 +18,5 @@ namespace PGR_FUND_LABS_CS.CourseProject.ReactiveCom_Lab7_.Entities
         {
             Console.WriteLine("Logger received completion signal.");
         }
-
     }
 }
