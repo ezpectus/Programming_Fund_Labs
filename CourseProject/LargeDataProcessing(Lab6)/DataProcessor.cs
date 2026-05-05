@@ -21,7 +21,7 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
             await foreach (var record in stream)
             {
                 totalRecords++;
-                await Task.Delay(1);
+                await Task.Delay(1); // Simulate async processing workload
 
                 if (!ShouldProcess(record))
                     continue;

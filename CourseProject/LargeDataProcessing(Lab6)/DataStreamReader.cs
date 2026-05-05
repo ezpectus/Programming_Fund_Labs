@@ -15,7 +15,7 @@ namespace PGR_FUND_LABS_CS.CourseProject.LargeDataProcessing
         // Reads data from a file and yields DataRecord instances incrementally
         public static async IAsyncEnumerable<DataRecord> ReadAsync(string filePath)
         {
-            using var reader = new StreamReader(filePath);
+            using var reader = new StreamReader(filePath, Encoding.UTF8, true, 8192);
 
             string line;
             int id = 0;
